@@ -32,12 +32,3 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
-    
----
-spring:
-  profiles: cloud
-
-eureka:
-  instance:
-    hostname: ${ocp.application.uris[0]}
-    nonSecurePort: 80
