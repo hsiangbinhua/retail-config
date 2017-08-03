@@ -1,11 +1,5 @@
 info:
   app:
-<<<<<<< HEAD
-    name: Retail OCP microservice
-    description: Microservice
+    name: Retail OCP service
+    description: Retail OCP Microservice
   
-=======
-    name: Ecommerce microservice
-    description: Microservice
-  
->>>>>>> branch 'master' of https://github.com/hsiangbinhua/retail-config.git
