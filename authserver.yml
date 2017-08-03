@@ -1,3 +1,21 @@
+<<<<<<< HEAD
+server:
+  port: 9999
+  contextPath: /uaa 
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${ocp.services.eureka.credentials.uri:http://localhost:8761}/eureka/
+
+security:
+  user:
+    password: password
+
+
+---
+eureka:
+=======
 # We need to setup different context root for the auth server so that we can store separate
 # cookies for both the API gateway as well as the OAuth2 authorization server.
 server:
@@ -21,6 +39,7 @@ spring:
 eureka:
 # Register our microservices to Eureka using hostnames in a Docker environment will not work, they will all get 
 # one and the same hostname. Instead we configure them to use its IP address during registration with Eureka.
+>>>>>>> branch 'master' of https://github.com/hsiangbinhua/retail-config.git
   instance:
     preferIpAddress: true
   client:
