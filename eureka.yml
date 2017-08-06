@@ -1,11 +1,60 @@
+# -Dspring.profiles.active=primary 加入参数启动项
+
+spring:
+  profiles: eureka-primary  #eureka-secondary eureka-tertiary
 server:
   port: 8761
-
 eureka:
+  server:
+    wait-time-in-ms-when-sync-empty: 0 #当同步为空时的等待时间
+    enableSelfPreservation: false  #关闭自我保护模式
   instance:
-    hostname: ${ocp.application.uris[0]:localhost}
+    hostname: ${ocp.application.uris[0]:eureka-primary}
+    prefer-ip-address: true #猜测主机ip时，优先显示ip地址
+    metadataMap:
+      instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
   client:
     registerWithEureka: false
     fetchRegistry: false
     serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/       
+      defaultZone: http://eureka-secondary:8771/eureka/,http://eureka-tertiary:8781/eureka/
+
+---
+spring:
+  profiles: eureka-secondary  #eureka-primary eureka-tertiary
+server:
+  port: 8771
+eureka:
+  server:
+    wait-time-in-ms-when-sync-empty: 0 #当同步为空时的等待时间
+    enableSelfPreservation: false  #关闭自我保护模式
+  instance:
+    hostname: ${ocp.application.uris[0]:eureka-secondary}
+    prefer-ip-address: true #猜测主机ip时，优先显示ip地址
+    metadataMap:
+      instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://eureka-secondary:8761/eureka/,http://eureka-tertiary:8781/eureka/
+
+---
+spring:
+  profiles: eureka-tertiary  #eureka-secondary eureka-primary
+server:
+  port: 8781
+eureka:
+  server:
+    wait-time-in-ms-when-sync-empty: 0 #当同步为空时的等待时间
+    enableSelfPreservation: false  #关闭自我保护模式
+  instance:
+    hostname: ${ocp.application.uris[0]:eureka-tertiary}
+    prefer-ip-address: true #猜测主机ip时，优先显示ip地址
+    metadataMap:
+      instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://eureka-secondary:8761/eureka/,http://eureka-tertiary:8771/eureka/
