@@ -39,7 +39,7 @@ eureka:
     registerWithEureka: false
     fetchRegistry: false
     serviceUrl:
-      defaultZone: http://eureka-tertiary:8781/eureka/
+      defaultZone: http://eureka-primary:8761/eureka/
 
 ---
 spring:
