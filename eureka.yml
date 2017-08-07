@@ -1,5 +1,5 @@
 # -Dspring.profiles.active=primary 加入参数启动项
-
+---
 spring:
   profiles: eureka-primary  #eureka-secondary eureka-tertiary
 server:
