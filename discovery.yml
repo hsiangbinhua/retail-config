@@ -9,7 +9,7 @@ eureka:
   server:
     enable-self-preservation: false  #关闭自我保护模式
   instance:
-    hostname: eureka-primary
+    hostname: eureka-discovery
   client:
     registerWithEureka: false
     fetchRegistry: true
@@ -26,7 +26,7 @@ eureka:
   server:
     enable-self-preservation: false  #关闭自我保护模式
   instance:
-    hostname: eureka-secondary
+    hostname: eureka-discovery
   client:
     registerWithEureka: false
     fetchRegistry: true
@@ -43,7 +43,7 @@ eureka:
   server:
     enable-self-preservation: false  #关闭自我保护模式
   instance:
-    hostname: eureka-tertiary
+    hostname: eureka-discovery
   client:
     registerWithEureka: false
     fetchRegistry: true
