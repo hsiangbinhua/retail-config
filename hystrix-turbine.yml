@@ -4,7 +4,7 @@ server:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://eureka-primary:8761/eureka/,http://eureka-secondary:8761/eureka/,http://eureka-tertiary:8761/eureka/
   instance:
     prefer-ip-address: true
 
