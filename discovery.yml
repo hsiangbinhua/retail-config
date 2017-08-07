@@ -2,7 +2,7 @@
 spring:
   application:
     name: eureka-server-clustered
-  profiles: primary
+  profiles: eureka-primary
 server:
   port: 1111
 eureka:
@@ -17,7 +17,7 @@ eureka:
 spring:
   application:
     name: eureka-server-clustered
-  profiles: secondary
+  profiles: eureka-secondary
 server:
   port: 1112
 eureka:
@@ -32,7 +32,7 @@ eureka:
 spring:
   application:
     name: eureka-server-clustered
-  profiles: tertiary
+  profiles: eureka-tertiary
 server:
   port: 1113
 eureka:
