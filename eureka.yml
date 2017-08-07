@@ -1,5 +1,5 @@
 # -Dspring.profiles.active=primary 加入参数启动项
----
+
 spring:
   profiles: eureka-primary  #eureka-secondary eureka-tertiary
 server:
@@ -10,15 +10,15 @@ eureka:
     enableSelfPreservation: false  #关闭自我保护模式
     eviction-interval-timer-in-ms: 6000  # 清理间隔（单位毫秒，默认是60*1000）
   instance:
-    hostname: ${ocp.application.uris[0]:eureka-primary}
+    hostname: eureka-primary
     prefer-ip-address: true #猜测主机ip时，优先显示ip地址
     metadataMap:
       instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
   client:
-    registerWithEureka: false
-    fetchRegistry: false
+    registerWithEureka: true
+    fetchRegistry: true
     serviceUrl:
-      defaultZone: http://eureka-secondary:8771/eureka/,http://eureka-tertiary:8781/eureka/
+      defaultZone: http://eureka-secondary:8771/eureka/
 
 ---
 spring:
@@ -31,15 +31,15 @@ eureka:
     enableSelfPreservation: false  #关闭自我保护模式
     eviction-interval-timer-in-ms: 6000  # 清理间隔（单位毫秒，默认是60*1000）
   instance:
-    hostname: ${ocp.application.uris[0]:eureka-secondary}
+    hostname: eureka-secondary
     prefer-ip-address: true #猜测主机ip时，优先显示ip地址
     metadataMap:
       instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
   client:
-    registerWithEureka: false
-    fetchRegistry: false
+    registerWithEureka: true
+    fetchRegistry: true
     serviceUrl:
-      defaultZone: http://eureka-primary:8761/eureka/,http://eureka-tertiary:8781/eureka/
+      defaultZone: http://eureka-tertiary:8781/eureka/
 
 ---
 spring:
@@ -52,12 +52,12 @@ eureka:
     enableSelfPreservation: false  #关闭自我保护模式
     eviction-interval-timer-in-ms: 6000  # 清理间隔（单位毫秒，默认是60*1000）
   instance:
-    hostname: ${ocp.application.uris[0]:eureka-tertiary}
+    hostname: eureka-tertiary
     prefer-ip-address: true #猜测主机ip时，优先显示ip地址
     metadataMap:
       instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
   client:
-    registerWithEureka: false
-    fetchRegistry: false
+    registerWithEureka: true
+    fetchRegistry: true
     serviceUrl:
-      defaultZone: http://eureka-primary:8761/eureka/,http://eureka-secondary:8771/eureka/
+      defaultZone: http://eureka-primary:8761/eureka/
