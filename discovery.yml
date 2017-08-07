@@ -12,7 +12,7 @@ eureka:
   instance:
     hostname: eureka-primary
   client:
-    registerWithEureka: false
+    registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
       defaultZone: http://eureka-secondary:8771/eureka/,http://eureka-tertiary:8781/eureka/
@@ -30,7 +30,7 @@ eureka:
   instance:
     hostname: eureka-secondary
   client:
-    registerWithEureka: false
+    registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
       defaultZone: http://eureka-primary:8761/eureka/,http://eureka-tertiary:8781/eureka/
@@ -48,7 +48,7 @@ eureka:
   instance:
     hostname: eureka-tertiary
   client:
-    registerWithEureka: false
+    registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
       defaultZone: http://eureka-primary:8761/eureka/,http://eureka-secondary:8771/eureka/
