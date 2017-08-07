@@ -1,51 +1,78 @@
 ---
-spring:
-  application:
-    name: discovery
-  profiles: eureka-primary
 server:
   port: 8761
 eureka:
   server:
-    enable-self-preservation: false  #关闭自我保护模式
+    enable-self-preservation: false
+#    renewal-percent-threshold: 0.85
+#    #缓存更新时间，默认30s
+#    response-cache-update-interval-ms: 10
+#    #缓存过期时间，默认180s
+#    response-cache-auto-expiration-in-seconds: 30
+#    # 实例过期清理时间间隔，默认60秒
+#    eviction-interval-timer-in-ms: 10
   instance:
-    hostname: eureka-discovery
+    hostname: eureka-server
+    instance-id: eureka-cluster-1
+    prefer-ip-address: true
+#    lease-renewal-interval-in-seconds: 20
+#    lease-expiration-duration-in-seconds: 40
   client:
     registerWithEureka: false
     fetchRegistry: true
     serviceUrl:
       defaultZone: http://eureka-secondary:8771/eureka/,http://eureka-tertiary:8781/eureka/
----
 spring:
-  application:
-    name: discovery
-  profiles: eureka-secondary
+  profiles: eureka-primary
+---
 server:
   port: 8771
 eureka:
   server:
-    enable-self-preservation: false  #关闭自我保护模式
+    enable-self-preservation: false
+#    renewal-percent-threshold: 0.85
+#    #缓存更新时间，默认30s
+#    response-cache-update-interval-ms: 10
+#    #缓存过期时间，默认180s
+#    response-cache-auto-expiration-in-seconds: 30
+#    # 实例过期清理时间间隔，默认60秒
+#    eviction-interval-timer-in-ms: 10
   instance:
-    hostname: eureka-discovery
+    hostname: eureka-server
+    instance-id: eureka-cluster-1
+    prefer-ip-address: true
+#    lease-renewal-interval-in-seconds: 20
+#    lease-expiration-duration-in-seconds: 40
   client:
     registerWithEureka: false
     fetchRegistry: true
     serviceUrl:
       defaultZone: http://eureka-primary:8761/eureka/,http://eureka-tertiary:8781/eureka/
----
 spring:
-  application:
-    name: discovery
-  profiles: eureka-tertiary
+  profiles: eureka-secondary
+---
 server:
   port: 8781
 eureka:
   server:
-    enable-self-preservation: false  #关闭自我保护模式
+    enable-self-preservation: false
+#    renewal-percent-threshold: 0.85
+#    #缓存更新时间，默认30s
+#    response-cache-update-interval-ms: 10
+#    #缓存过期时间，默认180s
+#    response-cache-auto-expiration-in-seconds: 30
+#    # 实例过期清理时间间隔，默认60秒
+#    eviction-interval-timer-in-ms: 10
   instance:
-    hostname: eureka-discovery
+    hostname: eureka-server
+    instance-id: eureka-cluster-1
+    prefer-ip-address: true
+#    lease-renewal-interval-in-seconds: 20
+#    lease-expiration-duration-in-seconds: 40
   client:
     registerWithEureka: false
     fetchRegistry: true
     serviceUrl:
       defaultZone: http://eureka-primary:8761/eureka/,http://eureka-secondary:8771/eureka/
+spring:
+profiles: eureka-tertiary
