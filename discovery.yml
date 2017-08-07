@@ -11,9 +11,8 @@ eureka:
     eviction-interval-timer-in-ms: 6000  # 清理间隔（单位毫秒，默认是60*1000）
   instance:
     hostname: eureka-primary
-    instanceId: ${spring.application.name}:${spring.application.instance_id:${server.port}}
   client:
-    registerWithEureka: true
+    registerWithEureka: false
     fetchRegistry: true
     serviceUrl:
       defaultZone: http://eureka-secondary:8771/eureka/,http://eureka-tertiary:8781/eureka/
@@ -30,9 +29,8 @@ eureka:
     eviction-interval-timer-in-ms: 6000  # 清理间隔（单位毫秒，默认是60*1000）
   instance:
     hostname: eureka-secondary
-    instanceId: ${spring.application.name}:${spring.application.instance_id:${server.port}}
   client:
-    registerWithEureka: true
+    registerWithEureka: false
     fetchRegistry: true
     serviceUrl:
       defaultZone: http://eureka-primary:8761/eureka/,http://eureka-tertiary:8781/eureka/
@@ -49,9 +47,8 @@ eureka:
     eviction-interval-timer-in-ms: 6000  # 清理间隔（单位毫秒，默认是60*1000）
   instance:
     hostname: eureka-tertiary
-    instanceId: ${spring.application.name}:${spring.application.instance_id:${server.port}}
   client:
-    registerWithEureka: true
+    registerWithEureka: false
     fetchRegistry: true
     serviceUrl:
       defaultZone: http://eureka-primary:8761/eureka/,http://eureka-secondary:8771/eureka/
