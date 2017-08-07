@@ -1,67 +1,45 @@
-# -Dspring.profiles.active=eureka-primary 加入参数启动项
 ---
 spring:
-  profiles: eureka-primary  #eureka-secondary eureka-tertiary
+  application:
+    name: eureka-server-clustered
+  profiles: primary
 server:
-  port: 8761
+  port: 1111
 eureka:
-  server:
-#    wait-time-in-ms-when-sync-empty: 0 #当同步为空时的等待时间
-    enable-self-preservation: false  #关闭自我保护模式
-    eviction-interval-timer-in-ms: 6000  # 清理间隔（单位毫秒，默认是60*1000）
   instance:
-    hostname: eureka-discovery-cluster
-    prefer-ip-address: true #猜测主机ip时，优先显示ip地址
-    instance-id: eureka-cluster-1
-#    metadataMap:
-#      instanceId: ${spring.application.name}:${random.value}
+    hostname: eureka-primary
   client:
-    registerWithEureka: false
+    registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
-      defaultZone: http://eureka-secondary:8771/eureka/,http://eureka-tertiary:8781/eureka/
-
+      defaultZone: http://eureka-secondary:1112/eureka/,http://eureka-tertiary:1113/eureka/
 ---
 spring:
-  profiles: eureka-secondary
+  application:
+    name: eureka-server-clustered
+  profiles: secondary
 server:
-  port: 8771
+  port: 1112
 eureka:
-  server:
-#    wait-time-in-ms-when-sync-empty: 0 #当同步为空时的等待时间
-    enable-self-preservation: false  #关闭自我保护模式
-    eviction-interval-timer-in-ms: 6000  # 清理间隔（单位毫秒，默认是60*1000）
   instance:
-    hostname: eureka-discovery-cluster
-    prefer-ip-address: true #猜测主机ip时，优先显示ip地址
-    instance-id: eureka-cluster-1
-#    metadataMap:
-#      instanceId: ${spring.application.name}:${random.value}
+    hostname: eureka-secondary
   client:
-    registerWithEureka: false
+    registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
-      defaultZone: http://eureka-primary:8761/eureka/,http://eureka-tertiary:8781/eureka/
-
+      defaultZone: http://eureka-secondary:1111/eureka/,http://eureka-tertiary:1113/eureka/
 ---
 spring:
-  profiles: eureka-tertiary
+  application:
+    name: eureka-server-clustered
+  profiles: tertiary
 server:
-  port: 8781
+  port: 1113
 eureka:
-  server:
-#    wait-time-in-ms-when-sync-empty: 0 #当同步为空时的等待时间
-    enable-self-preservation: false  #关闭自我保护模式
-    eviction-interval-timer-in-ms: 6000  # 清理间隔（单位毫秒，默认是60*1000）
   instance:
-    hostname: eureka-discovery-cluster
-    prefer-ip-address: true #猜测主机ip时，优先显示ip地址
-    instance-id: eureka-cluster-1
-#    metadataMap:
-#      instanceId: ${spring.application.name}:${random.value}
+    hostname: eureka-tertiary
   client:
-    registerWithEureka: false
+    registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
-      defaultZone: http://eureka-primary:8761/eureka/,http://eureka-secondary:8771/eureka/
-   
+      defaultZone: http://eureka-secondary:1111/eureka/,http://eureka-tertiary:1112/eureka/
