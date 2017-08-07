@@ -8,11 +8,10 @@ server:
 eureka:
   server:
     enable-self-preservation: false  #关闭自我保护模式
-    eviction-interval-timer-in-ms: 6000  # 清理间隔（单位毫秒，默认是60*1000）
   instance:
     hostname: eureka-primary
   client:
-    registerWithEureka: true
+    registerWithEureka: false
     fetchRegistry: true
     serviceUrl:
       defaultZone: http://eureka-secondary:8771/eureka/,http://eureka-tertiary:8781/eureka/
@@ -26,11 +25,10 @@ server:
 eureka:
   server:
     enable-self-preservation: false  #关闭自我保护模式
-    eviction-interval-timer-in-ms: 6000  # 清理间隔（单位毫秒，默认是60*1000）
   instance:
     hostname: eureka-secondary
   client:
-    registerWithEureka: true
+    registerWithEureka: false
     fetchRegistry: true
     serviceUrl:
       defaultZone: http://eureka-primary:8761/eureka/,http://eureka-tertiary:8781/eureka/
@@ -44,11 +42,10 @@ server:
 eureka:
   server:
     enable-self-preservation: false  #关闭自我保护模式
-    eviction-interval-timer-in-ms: 6000  # 清理间隔（单位毫秒，默认是60*1000）
   instance:
     hostname: eureka-tertiary
   client:
-    registerWithEureka: true
+    registerWithEureka: false
     fetchRegistry: true
     serviceUrl:
       defaultZone: http://eureka-primary:8761/eureka/,http://eureka-secondary:8771/eureka/
