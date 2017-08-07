@@ -6,11 +6,6 @@ info:
 server:
   port: 8083
 
-spring:
-  jpa:
-   hibernate:
-      ddl-auto: create-drop
-      
 eureka:
   instance:
     preferIpAddress: true
@@ -23,7 +18,3 @@ eureka:
 spring:
   zipkin:
     baseUrl: ${ocp.services.eureka.credentials.uri:http://localhost:9411}
-    
-spring:
-  profiles: cloud
-
