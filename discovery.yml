@@ -1,45 +1,51 @@
 ---
 spring:
-  application:
-    name: eureka-server-clustered
   profiles: eureka-primary
 server:
-  port: 1111
+  port: 8761
 eureka:
+  server:
+    enable-self-preservation: false  #关闭自我保护模式
+    eviction-interval-timer-in-ms: 6000  # 清理间隔（单位毫秒，默认是60*1000）
   instance:
     hostname: eureka-primary
+    prefer-ip-address: true #猜测主机ip时，优先显示ip地址
   client:
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
-      defaultZone: http://eureka-secondary:1112/eureka/,http://eureka-tertiary:1113/eureka/
+      defaultZone: http://eureka-secondary:8771/eureka/,http://eureka-tertiary:8781/eureka/
 ---
 spring:
-  application:
-    name: eureka-server-clustered
   profiles: eureka-secondary
 server:
-  port: 1112
+  port: 8771
 eureka:
+  server:
+    enable-self-preservation: false  #关闭自我保护模式
+    eviction-interval-timer-in-ms: 6000  # 清理间隔（单位毫秒，默认是60*1000）
   instance:
     hostname: eureka-secondary
+    prefer-ip-address: true #猜测主机ip时，优先显示ip地址
   client:
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
-      defaultZone: http://eureka-secondary:1111/eureka/,http://eureka-tertiary:1113/eureka/
+      defaultZone: http://eureka-secondary:8761/eureka/,http://eureka-tertiary:8781/eureka/
 ---
 spring:
-  application:
-    name: eureka-server-clustered
   profiles: eureka-tertiary
 server:
-  port: 1113
+  port: 8781
 eureka:
+  server:
+    enable-self-preservation: false  #关闭自我保护模式
+    eviction-interval-timer-in-ms: 6000  # 清理间隔（单位毫秒，默认是60*1000）
   instance:
     hostname: eureka-tertiary
+    prefer-ip-address: true #猜测主机ip时，优先显示ip地址
   client:
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
-      defaultZone: http://eureka-secondary:1111/eureka/,http://eureka-tertiary:1112/eureka/
+      defaultZone: http://eureka-secondary:8761/eureka/,http://eureka-tertiary:8771/eureka/
