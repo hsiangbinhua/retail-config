@@ -15,8 +15,8 @@ eureka:
     metadataMap:
       instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
   client:
-    registerWithEureka: true
-    fetchRegistry: true
+    registerWithEureka: false
+    fetchRegistry: false
     serviceUrl:
       defaultZone: http://eureka-secondary:8771/eureka/
 
@@ -36,8 +36,8 @@ eureka:
     metadataMap:
       instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
   client:
-    registerWithEureka: true
-    fetchRegistry: true
+    registerWithEureka: false
+    fetchRegistry: false
     serviceUrl:
       defaultZone: http://eureka-tertiary:8781/eureka/
 
@@ -57,7 +57,7 @@ eureka:
     metadataMap:
       instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
   client:
-    registerWithEureka: true
-    fetchRegistry: true
+    registerWithEureka: false
+    fetchRegistry: false
     serviceUrl:
       defaultZone: http://eureka-primary:8761/eureka/
