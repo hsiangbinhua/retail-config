@@ -6,8 +6,9 @@ server:
   port: 8761
 eureka:
   server:
-    wait-time-in-ms-when-sync-empty: 0 #当同步为空时的等待时间
+#    wait-time-in-ms-when-sync-empty: 0 #当同步为空时的等待时间
     enableSelfPreservation: false  #关闭自我保护模式
+    eviction-interval-timer-in-ms: 6000  # 清理间隔（单位毫秒，默认是60*1000）
   instance:
     hostname: ${ocp.application.uris[0]:eureka-primary}
     prefer-ip-address: true #猜测主机ip时，优先显示ip地址
@@ -26,8 +27,9 @@ server:
   port: 8771
 eureka:
   server:
-    wait-time-in-ms-when-sync-empty: 0 #当同步为空时的等待时间
+#    wait-time-in-ms-when-sync-empty: 0 #当同步为空时的等待时间
     enableSelfPreservation: false  #关闭自我保护模式
+    eviction-interval-timer-in-ms: 6000  # 清理间隔（单位毫秒，默认是60*1000）
   instance:
     hostname: ${ocp.application.uris[0]:eureka-secondary}
     prefer-ip-address: true #猜测主机ip时，优先显示ip地址
@@ -46,8 +48,9 @@ server:
   port: 8781
 eureka:
   server:
-    wait-time-in-ms-when-sync-empty: 0 #当同步为空时的等待时间
+#    wait-time-in-ms-when-sync-empty: 0 #当同步为空时的等待时间
     enableSelfPreservation: false  #关闭自我保护模式
+    eviction-interval-timer-in-ms: 6000  # 清理间隔（单位毫秒，默认是60*1000）
   instance:
     hostname: ${ocp.application.uris[0]:eureka-tertiary}
     prefer-ip-address: true #猜测主机ip时，优先显示ip地址

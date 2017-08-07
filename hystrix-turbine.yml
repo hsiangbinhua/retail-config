@@ -3,6 +3,8 @@ server:
 
 eureka:
   client:
+    healthcheck:
+      enabled: true
     service-url:
       defaultZone: http://eureka-primary:8761/eureka/,http://eureka-secondary:8761/eureka/,http://eureka-tertiary:8761/eureka/
   instance:

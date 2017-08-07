@@ -12,6 +12,8 @@ eureka:
     hostname: localhost
     nonSecurePort: 10080
   client:
+    healthcheck:
+      enabled: true
     serviceUrl:
       defaultZone: http://eureka-primary:8761/eureka/,http://eureka-secondary:8761/eureka/,http://eureka-tertiary:8761/eureka/
 
