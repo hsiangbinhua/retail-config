@@ -13,10 +13,10 @@ eureka:
     hostname: eureka-primary
     prefer-ip-address: true #猜测主机ip时，优先显示ip地址
     metadataMap:
-      instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+      instanceId: ${spring.application.name}:${random.value}
   client:
-    registerWithEureka: false
-    fetchRegistry: false
+    registerWithEureka: true
+    fetchRegistry: true
     serviceUrl:
       defaultZone: http://eureka-secondary:8771/eureka/
 
@@ -34,10 +34,10 @@ eureka:
     hostname: eureka-secondary
     prefer-ip-address: true #猜测主机ip时，优先显示ip地址
     metadataMap:
-      instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+      instanceId: ${spring.application.name}:${random.value}
   client:
-    registerWithEureka: false
-    fetchRegistry: false
+    registerWithEureka: true
+    fetchRegistry: true
     serviceUrl:
       defaultZone: http://eureka-primary:8761/eureka/
 
@@ -55,7 +55,7 @@ eureka:
     hostname: eureka-tertiary
     prefer-ip-address: true #猜测主机ip时，优先显示ip地址
     metadataMap:
-      instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+      instanceId: ${spring.application.name}:${random.value}
   client:
     registerWithEureka: false
     fetchRegistry: false
