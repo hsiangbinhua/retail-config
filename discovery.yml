@@ -18,7 +18,7 @@ eureka:
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
-      defaultZone: http://eureka-secondary:8771/eureka/
+      defaultZone: http://eureka-secondary:8771/eureka/,http://eureka-tertiary:8781/eureka/
 
 ---
 spring:
@@ -39,7 +39,7 @@ eureka:
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
-      defaultZone: http://eureka-primary:8761/eureka/
+      defaultZone: http://eureka-primary:8761/eureka/,http://eureka-tertiary:8781/eureka/
 
 ---
 spring:
@@ -57,7 +57,7 @@ eureka:
     metadataMap:
       instanceId: ${spring.application.name}:${random.value}
   client:
-    registerWithEureka: false
-    fetchRegistry: false
+    registerWithEureka: true
+    fetchRegistry: true
     serviceUrl:
-      defaultZone: http://eureka-primary:8761/eureka/
+      defaultZone: http://eureka-primary:8761/eureka/,http://eureka-secondary:8771/eureka/
