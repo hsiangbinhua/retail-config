@@ -6,7 +6,7 @@ eureka:
     healthcheck:
       enabled: true
     service-url:
-      defaultZone: http://eureka-primary:8761/eureka/,http://eureka-secondary:8761/eureka/,http://eureka-tertiary:8761/eureka/
+      defaultZone: http://eureka-primary:8761/eureka/,http://eureka-secondary:8771/eureka/,http://eureka-tertiary:8781/eureka/
   instance:
     prefer-ip-address: true
 
