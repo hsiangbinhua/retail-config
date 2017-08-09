@@ -13,3 +13,4 @@ eureka:
 turbine:
   appConfig: orders-service
   clusterNameExpression: "'default'"
+  combine-host-port: true

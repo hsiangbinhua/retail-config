@@ -17,6 +17,6 @@ eureka:
     serviceUrl:
       defaultZone: http://eureka-primary:8761/eureka/,http://eureka-secondary:8771/eureka/,http://eureka-tertiary:8781/eureka/
 
-#spring:
-#  zipkin:
-#    baseUrl: http://localhost:9411
+spring:
+  zipkin:
+    baseUrl: http://localhost:9411
